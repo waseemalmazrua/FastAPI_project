@@ -6,14 +6,14 @@ import psycopg2
 import time 
 from app.config import get_settings
 
-
+settings = get_settings()
 
 SQLALCHEMY_DATABASE_URL = (
-    f"postgresql://{get_settings.database_username}:"
-    f"{get_settings.database_password}@"
-    f"{get_settings.database_hostname}:"
-    f"{get_settings.database_port}/"
-    f"{get_settings.database_name}"
+    f"postgresql://{settings.database_username}:"
+    f"{settings.database_password}@"
+    f"{settings.database_hostname}:"
+    f"{settings.database_port}/"
+    f"{settings.database_name}"
 )
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 

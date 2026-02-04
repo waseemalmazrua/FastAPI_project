@@ -4,6 +4,7 @@ from app import schemas
 
 from app.config import get_settings
 
+settings = get_settings()
 
 # def test_root(client):
 
@@ -27,7 +28,7 @@ def test_login_user(test_user, client):
         "/login", data={"username": test_user['email'], "password": test_user['password']})
     login_res = schemas.Token(**res.json())
     payload = jwt.decode(login_res.access_token,
-                         get_settings.secret_key, algorithms=[get_settings.algorithm])
+                         settings.secret_key, algorithms=[settings.algorithm])
     id = payload.get("user_id")
     assert id == test_user['id']
     assert login_res.token_type == "bearer"

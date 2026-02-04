@@ -3,7 +3,7 @@ import os
 from functools import lru_cache
 
 
-ENV = os.getenv("ENV")
+ENV = os.getenv("ENV","dev")
 
 class Settings(BaseSettings):
     database_hostname: str
@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int
 
     model_config = SettingsConfigDict(
-        env_file=f".env.{ENV}" if ENV else None,
+        env_file=f".env.{ENV}",
         case_sensitive=False
     )
 
