@@ -1,5 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 import os
+from functools import lru_cache
+
 
 ENV = os.getenv("ENV")
 
@@ -18,5 +20,7 @@ class Settings(BaseSettings):
         case_sensitive=False
     )
 
-settings = Settings()
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()
 
