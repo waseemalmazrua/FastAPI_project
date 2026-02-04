@@ -16,9 +16,9 @@ services:
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_PASSWORD: Wasiem123456
-      POSTGRES_DB: fastapi
-      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
     volumes:
       - postgres-db:/var/lib/postgresql/data
 
