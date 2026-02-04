@@ -1,4 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
+import os
+
+ENV = os.getenv("env", "dev")
 
 class Settings(BaseSettings):
     database_hostname: str
@@ -11,7 +14,7 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=f".env.{ENV}",
         case_sensitive=False
     )
 

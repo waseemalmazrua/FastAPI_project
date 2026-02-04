@@ -1,4 +1,4 @@
-from pydantic import BaseModel , EmailStr , conint , Field
+from pydantic import BaseModel , EmailStr , conint , Field , ConfigDict
 from typing import Optional , Union 
 from typing_extensions import Annotated
 from random import randrange
@@ -25,8 +25,8 @@ class UserOut(BaseModel):
     email : EmailStr
     created_at : datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
+
 
 
 
@@ -42,16 +42,16 @@ class Post(PostBase):
     owner : UserOut
 
  
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
+
          
 
 class PostOUT(BaseModel):
     Post:Post
     votes:int
 
-    class Config:
-        from_attributes=True
+    model_config = ConfigDict(from_attributes=True)
+
 
 
 
